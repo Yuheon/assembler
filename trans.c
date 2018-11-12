@@ -20,25 +20,26 @@ int instr_trans(char *op, char *args, char* mcode)
 	i++;
 	
 	if(args[0]=='%'&&args[i]=='%')//reg to reg
-		mcode="89";
+		//mcode="89";
+		strcpy(mcode,"89");
 	else if(args[0]=='('||args[0]=='-'){//mem to reg case 2,3
 		if(args[i]=='%')
-			mcode="8b";
+			strcpy(mcode,"8b");
 	}
 	else if(args[0]=='0'&&args[i]=='%')//mem to reg case 4
-		mcode="a1";
+		strcpy(mcode,"a1");
 	else if(args[0]=='%'&&(args[i]=='0'||args[i]=='('))//eax to mem
-		mcode="a3";
+		strcpy(mcode,"a3");
 	else if(args[0]=='$'&&args[i]=='%')//imd to reg
 	{
 		if(args[i+2]=='a')
-			mcode="b8";
+			strcpy(mcode,"b8");
 		else if(args[i+2]=='b')
-			mcode="b9";
+			strcpy(mcode,"bb");
 		else if(args[i+2]=='c')
-			mcode="ba";
-		else if(args[i+2])
-			mcode="bb";
+			strcpy(mcode,"b9");
+		else if(args[i+2]=='d')
+			strcpy(mcode,"ba");
 	}
 	else
 		return 0;
