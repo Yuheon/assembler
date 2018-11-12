@@ -14,6 +14,7 @@ int instr_trans(char *op, char *args, char* mcode)
 	for(i=0;args[i]!=NULL;i++){
 		if(args[i]==',')
 			break;
+	}
 	if(args[i]==NULL)
 		return 0;
 	i++;
