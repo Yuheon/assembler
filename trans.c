@@ -6,9 +6,10 @@ int instr_trans(char *op, char *args, char* mcode)
 	// check syntax 
 	if(!is_valid(op, args)){
 		printf("Error: %s %s is not valid\n", op, args);
+		strcpy(mcode,"error");
 		return 0;
 	}
-
+	
 
 	strcpy(mcode, "AB CD EF");
 	for(i=0;args[i]!=NULL;i++){
@@ -18,7 +19,7 @@ int instr_trans(char *op, char *args, char* mcode)
 	if(args[i]==NULL)
 		return 0;
 	i++;
-	
+		
 	if(args[0]=='%'&&args[i]=='%')//reg to reg
 		//mcode="89";
 		strcpy(mcode,"89");
